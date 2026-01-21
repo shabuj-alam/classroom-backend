@@ -6,6 +6,10 @@ import subjectsRouter from "./routes/subjects";
 const app = express();
 const port = 8000;
 
+if(!process.env.FRONTEND_URl) {
+    throw new Error('FRONTEND_URl is required in .env file');
+}
+
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
